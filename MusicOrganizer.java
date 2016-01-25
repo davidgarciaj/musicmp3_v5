@@ -56,7 +56,8 @@ public class MusicOrganizer
         if(indexValid(index)) {
             Track track = tracks.get(index);
             player.startPlaying(track.getFilename());
-            System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle());
+            track.incrementCount();
+            System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle() + " - Nº de veces reproducido: " + track.getPlayCount());
         }
     }
     
@@ -77,7 +78,7 @@ public class MusicOrganizer
     {
         System.out.print("Track " + index + ": ");
         Track track = tracks.get(index);
-        System.out.println(track.getDetails());
+        System.out.println(track.getDetails() + " - Nº de veces reproducido: " + track.getPlayCount());
     }
     
     /**
@@ -88,7 +89,7 @@ public class MusicOrganizer
         System.out.println("Track listing: ");
 
         for(Track track : tracks) {
-            System.out.println(track.getDetails());
+            System.out.println(track.getDetails() + " - Nº de veces reproducido: " + track.getPlayCount());
         }
         System.out.println();
     }
@@ -101,7 +102,7 @@ public class MusicOrganizer
     {
         for(Track track : tracks) {
             if(track.getArtist().contains(artist)) {
-                System.out.println(track.getDetails());
+                System.out.println(track.getDetails() + " - Nº de veces reproducido: " + track.getPlayCount());
             }
         }
     }
@@ -177,7 +178,7 @@ public class MusicOrganizer
     public void findInTitle(String title){
         for(Track track : tracks) {
             if(track.getTitle().contains(title)) {
-                System.out.println(track.getDetails());
+                System.out.println(track.getDetails() + " - Nº de veces reproducido: " + track.getPlayCount());
             }
         }
     }
