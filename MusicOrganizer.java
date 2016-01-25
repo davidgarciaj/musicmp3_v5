@@ -170,4 +170,15 @@ public class MusicOrganizer
             addTrack(track);
         }
     }
+    
+    /**
+     * Muestra la información de la canción del titulo proporcionado
+     */
+    public void findInTitle(String title){
+        for(Track track : tracks) {
+            if(track.getTitle().contains(title)) {
+                System.out.println(track.getDetails());
+            }
+        }
+    }
 }
