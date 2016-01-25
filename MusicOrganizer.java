@@ -15,6 +15,10 @@ public class MusicOrganizer
     private MusicPlayer player;
     // A reader that can read music files and load them as tracks.
     private TrackReader reader;
+    //Indica si se esta reproduciendo
+    private boolean inPlay;
+    //Indica que canción se esta reproduciendo
+    private int inPlayIndex;
 
     /**
      * Create a MusicOrganizer
@@ -24,6 +28,8 @@ public class MusicOrganizer
         tracks = new ArrayList<Track>();
         player = new MusicPlayer();
         reader = new TrackReader();
+        inPlay = false;
+        inPlayIndex = -1;
         readLibrary("audio");
         System.out.println("Music library loaded. " + getNumberOfTracks() + " tracks.");
         System.out.println();
@@ -56,6 +62,8 @@ public class MusicOrganizer
         if(indexValid(index)) {
             Track track = tracks.get(index);
             player.startPlaying(track.getFilename());
+            inPlay = true;
+            inPlayIndex = index;
             track.incrementCount();
             System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle() + " - Nº de veces reproducido: " + track.getPlayCount());
         }
@@ -125,6 +133,8 @@ public class MusicOrganizer
     {
         if(tracks.size() > 0) {
             player.startPlaying(tracks.get(0).getFilename());
+            inPlay = true;
+            inPlayIndex = 0;
             tracks.get(0).incrementCount();
         }
     }
@@ -135,6 +145,8 @@ public class MusicOrganizer
     public void stopPlaying()
     {
         player.stop();
+        inPlay = false;
+        inPlayIndex = -1;
     }
 
     /**
@@ -189,5 +201,18 @@ public class MusicOrganizer
      */
     public void cambiaMinutosCancion(int index, int minutos){        
             tracks.get(index).chageMinuteTrack(minutos);
+    }
+    
+    /**
+     * Indica si se esta reproduciendo una canción y que canción se esta reproduciendo
+     */
+    public void isPlaying(){
+        if(inPlay){
+            System.out.println("Actualmente se esta reproduciendo la canción:");
+            System.out.println(tracks.get(inPlayIndex).getDetails());
+        }
+        else{
+            System.out.println("Actualmente no se esta reproduciendo ninguna canción.");
+        }
     }
 }
