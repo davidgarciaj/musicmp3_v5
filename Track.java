@@ -15,6 +15,8 @@ public class Track
     private String filename;
     //Cuenta las veces que se ha reproducido
     private int playCount;
+    //Indica los minutos que dura la cancion
+    private int minuteTrack;
     
     /**
      * Constructor for objects of class Track.
@@ -26,6 +28,7 @@ public class Track
     {
         setDetails(artist, title, filename);
         playCount = 0;
+        minuteTrack = 0;
     }
     
     /**
@@ -38,6 +41,7 @@ public class Track
     {
         setDetails("unknown", "unknown", filename);
         playCount = 0;
+        minuteTrack = 0;
     }
     
     /**
@@ -75,6 +79,22 @@ public class Track
     {
         return filename;
     }
+    
+    /**
+     * Return the minute of the file.
+     * @return The minute of the file.
+     */
+    public int getMinuteTrack()
+    {
+        return minuteTrack;
+    }
+    
+    /**
+     * Modifica los minutos de la canción
+     */
+    public void chageMinuteTrack(int newMinuteTrack){
+        minuteTrack = newMinuteTrack;
+    }
         
     /**
      * Return details of the track: artist, title and file name.
@@ -82,7 +102,8 @@ public class Track
      */
     public String getDetails()
     {
-        return artist + ": " + title + "  (file: " + filename + ")";
+        return artist + ": " + title + "  (file: " + filename + ")"
+                + "- Minutos de duración: " + minuteTrack + " - Nº de veces reproducido: " + playCount;
     }
     
     /**

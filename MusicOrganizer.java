@@ -78,7 +78,7 @@ public class MusicOrganizer
     {
         System.out.print("Track " + index + ": ");
         Track track = tracks.get(index);
-        System.out.println(track.getDetails() + " - Nº de veces reproducido: " + track.getPlayCount());
+        System.out.println(track.getDetails());
     }
     
     /**
@@ -89,7 +89,7 @@ public class MusicOrganizer
         System.out.println("Track listing: ");
 
         for(Track track : tracks) {
-            System.out.println(track.getDetails() + " - Nº de veces reproducido: " + track.getPlayCount());
+            System.out.println(track.getDetails());
         }
         System.out.println();
     }
@@ -102,7 +102,7 @@ public class MusicOrganizer
     {
         for(Track track : tracks) {
             if(track.getArtist().contains(artist)) {
-                System.out.println(track.getDetails() + " - Nº de veces reproducido: " + track.getPlayCount());
+                System.out.println(track.getDetails());
             }
         }
     }
@@ -125,6 +125,7 @@ public class MusicOrganizer
     {
         if(tracks.size() > 0) {
             player.startPlaying(tracks.get(0).getFilename());
+            tracks.get(0).incrementCount();
         }
     }
     
@@ -178,8 +179,15 @@ public class MusicOrganizer
     public void findInTitle(String title){
         for(Track track : tracks) {
             if(track.getTitle().contains(title)) {
-                System.out.println(track.getDetails() + " - Nº de veces reproducido: " + track.getPlayCount());
+                System.out.println(track.getDetails());
             }
         }
+    }
+    
+    /**
+     * Cambia la información sobre los minutos que dura una canción
+     */
+    public void cambiaMinutosCancion(int index, int minutos){        
+            tracks.get(index).chageMinuteTrack(minutos);
     }
 }
