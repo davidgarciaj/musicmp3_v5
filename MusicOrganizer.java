@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * A class to hold details of audio tracks.
@@ -195,10 +196,15 @@ public class MusicOrganizer
      * Muestra la información de la canción del titulo proporcionado
      */
     public void findInTitle(String title){
+        boolean notfind = true;
         for(Track track : tracks) {
             if(track.getTitle().contains(title)) {
                 System.out.println(track.getDetails());
+                notfind = false;
             }
+        }
+        if(notfind){
+                System.out.println("No se ha encontrado ninguna canción con ese titulo.");            
         }
     }
     
@@ -220,5 +226,18 @@ public class MusicOrganizer
         else{
             System.out.println("Actualmente no se esta reproduciendo ninguna canción.");
         }
+    }
+    
+    /**
+     * Show a list of all the tracks in the collection with a iterator.
+     */
+    public void listAllTracksWithIterator()
+    {
+        System.out.println("Track listing: ");
+        Iterator<Track> it = tracks.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next().getDetails());
+        }
+        System.out.println();
     }
 }
