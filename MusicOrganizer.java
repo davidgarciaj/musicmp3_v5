@@ -240,4 +240,17 @@ public class MusicOrganizer
         }
         System.out.println();
     }
+    
+    /**
+     * Elimina todas las canciones de un artista indicado
+     */
+    public void removeByArtist(String artist){
+       Iterator<Track> it = tracks.iterator();
+        while(it.hasNext()){            
+            Track artista = it.next();
+            if(artista.getArtist().contains(artist)){
+                it.remove();
+            }
+        } 
+    }
 }
