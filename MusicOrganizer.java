@@ -251,6 +251,19 @@ public class MusicOrganizer
             if(artista.getArtist().contains(artist)){
                 it.remove();
             }
-        } 
+        }
+    }
+    
+    /**
+     * Elimina todas las canciones de un titulo indicado
+     */
+    public void removeByTitle(String title){
+       Iterator<Track> it = tracks.iterator();
+        while(it.hasNext()){            
+            Track titulo = it.next();
+            if(titulo.getTitle().contains(title)){
+                it.remove();
+            }
+        }   
     }
 }
